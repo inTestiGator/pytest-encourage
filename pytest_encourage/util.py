@@ -4,7 +4,7 @@ from typing import List, Dict, Union
 
 
 def read_source_file(filepath: str) -> List[str]:
-    """ Decorator which reads the lines of a file and passes as arg to func """
+    """ Function which returns the lines of a file """
     # pylint: disable=invalid-name
     with open(filepath, "r") as f:
         lines = f.read().split("\n")

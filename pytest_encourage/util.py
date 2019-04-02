@@ -11,8 +11,12 @@ def read_source_file(filepath: str) -> List[str]:
         return lines
 
 
-def lint_message_is_in_assertion(msg: Dict[str, Union[str, int]]):
-    """ Checks whether a PyLint message is referring to an assert statement """
+# Define custom type for a Pylint message
+LintMsg = Dict[str, Union[str, int]]
+
+
+def lint_message_is_in_assertion(msg: LintMsg) -> bool:
+    """ Checks whether a Pylint message is referring to an assert statement """
     path, line_num = msg["path"], msg["line"]
     # Line numbers start with 1, not 0
     line = read_source_file(path)[line_num - 1]
@@ -21,8 +25,9 @@ def lint_message_is_in_assertion(msg: Dict[str, Union[str, int]]):
     return line.startswith("assert")
 
 
-def pylint_assertion_messages(pylint_json_string):
-    """ Filters PyLint output to include only messages which referring to
+def filter_assertions(msgs: Union[str, List[LintMsg]]) -> List[LintMsg]:
+    """ Filters Pylint output to include only messages which referring to
         assert statements """
-    msgs = json.loads(pylint_json_string)
+    if isinstance(msgs, str):
+        msgs = json.loads(msgs)
     return list(filter(lint_message_is_in_assertion, msgs))

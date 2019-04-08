@@ -8,3 +8,4 @@ def getpylint_output():
     except subprocess.CalledProcessError as automate:
         output = automate.output
         print (automate.output)
+        return automate.output

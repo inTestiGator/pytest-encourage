@@ -1,8 +1,8 @@
 """ Utility functions """
 import json
 from typing import List, Dict, Union
+from .automate import getpylint_output
 
-import automate
 def read_source_file(filepath: str) -> List[str]:
     """ Function which returns the lines of a file """
     # pylint: disable=invalid-name
@@ -28,14 +28,17 @@ def lint_message_is_in_assertion(msg: LintMsg) -> bool:
 def filter_assertions(msgs: Union[str, List[LintMsg]]) -> List[LintMsg]:
     """ Filters Pylint output to include only messages which refer to
         assert statements """
-    filtered_output = automate.getpylint_output()
-    print(filtered_output)
     if isinstance(msgs, str):
         # If passing in a JSON string, parse it to get a List[LintMsg] object
         msgs = json.loads(msgs)
     return list(filter(lint_message_is_in_assertion, msgs))
 
-if __name__ == "__main__":
-    filtered_output = automate.getpylint_output()
+
+def main():
+    filtered_output = getpylint_output()
     filter_assertions(filtered_output)
     print(filter_assertions(filtered_output))
+
+
+if __name__ == "__main__":
+    main()

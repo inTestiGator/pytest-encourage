@@ -29,6 +29,11 @@ def run_pylint(script_path, cwd='.'):
     :param script_path: Absolute path to the script to run.
     :param cwd: The directory to run the script from.
     """
+    # calls and runs pylint
+    from pylint import epylint as lint
+    (pylint_stdout, pylint_stderr) = lint.py_run('module_name.py', return_std=True)
+
+    # leveraged code
     run_thru_shell = sys.platform.startswith('pyl')
     if script_path.endswith('.py'):
         script_command = [sys.executable, script_path]

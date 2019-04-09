@@ -38,3 +38,4 @@ def filter_assertions(msgs: Union[str, List[LintMsg]]) -> List[LintMsg]:
 if __name__ == "__main__":
     filtered_output = automate.getpylint_output()
     filter_assertions(filtered_output)
+    print(filter_assertions(filtered_output))

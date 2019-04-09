@@ -7,5 +7,6 @@ def getpylint_output():
         automate = subprocess.check_output(list, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as automate:
         output = automate.output
-        print (automate.output)
-        return automate.output
+        output.decode()
+        print (output.decode())
+        return output.decode()

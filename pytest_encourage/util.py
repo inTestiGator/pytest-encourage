@@ -28,6 +28,7 @@ def lint_message_is_in_assertion(msg: LintMsg) -> bool:
 def filter_assertions(msgs: Union[str, List[LintMsg]]) -> List[LintMsg]:
     """ Filters Pylint output to include only messages which refer to
         assert statements """
+    filtered_output = getpylint_output()
     if isinstance(msgs, str):
         # If passing in a JSON string, parse it to get a List[LintMsg] object
         msgs = json.loads(msgs)

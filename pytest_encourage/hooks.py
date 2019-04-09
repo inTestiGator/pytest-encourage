@@ -8,6 +8,8 @@ import subprocess
 import sys
 import tempfile
 
+from pytest_encourage.util import filter_assertions
+
 def pytest_runtest_logstart(nodeid, location):
     # run pylint using filename, then pass to filter_assertions
     """ signal the start of running a single test item.

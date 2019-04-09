@@ -21,7 +21,7 @@ setup(
     name=NAME,
     description=DESCRIPTION,
     license=LICENSE,
-    long_description=read('README.rst'),
+    long_description=read('README.md'),
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     url=URL,

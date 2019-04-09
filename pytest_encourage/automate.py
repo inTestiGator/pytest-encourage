@@ -1,8 +1,8 @@
 import subprocess
 
 
-def getpylint_output():
-    list = ["pipenv", "run", "pylint", "util", "-f", "json"]
+def getpylint_output(path_to_file):
+    list = ["pipenv", "run", "pylint", "path_to_file", "-f", "json"]
     try:
         automate = subprocess.check_output(list, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as automate:

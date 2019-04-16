@@ -4,10 +4,10 @@ from typing import Iterator, Tuple
 
 
 # All checks are enabled by default
-COMPARE_CHECKS = [
+COMPARE_CHECKS = (
     is_double_negative,
     is_none_compare,
-]
+)
 
 
 def run_compare_checks(expr: ast.Compare, checks=COMPARE_CHECKS):

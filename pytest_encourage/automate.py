@@ -12,7 +12,7 @@ def runChecks(item):
     for node in ast.walk(tree):
         if isinstance(node, ast.Assert):
             if isinstance(node.test, ast.Compare):
-    checks.is_double_negative()
+                checks.is_double_negative()
 
 def getpylint_output(path_to_file):
     list = ["pipenv", "run", "pylint", path_to_file, "-f", "json"]

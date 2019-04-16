@@ -1,4 +1,14 @@
 import subprocess
+import os.path
+from os import path
+
+from pylint.checkers import base
+
+def runChecks():
+    try:
+    fh = open('/path/to/file', 'r')
+    # Store configuration file values
+        if fh is not none:
 
 
 def getpylint_output(path_to_file):

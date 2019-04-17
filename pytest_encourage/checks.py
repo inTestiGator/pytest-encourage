@@ -3,22 +3,7 @@ import ast
 from typing import Iterator, Tuple
 
 
-# All checks are enabled by default
-COMPARE_CHECKS = (
-    is_double_negative,
-    is_none_compare,
-)
-
-
-def run_compare_checks(expr: ast.Compare, checks=COMPARE_CHECKS):
-    """ Runs all comparison checks and returns those which fail """
-    failing = []
-    # On all the comparisons in the expression, find the failing checks
-    for left, oper, right in get_all_compares(expr):
-        for check in checks:
-            if not check(left, oper, right):
-                failing.append(check.__doc__)  # Docstring used as error msg
-    return failing
+""" Checks for comparison expressions """
 
 
 def get_all_compares(expr: ast.Compare) -> Iterator[Tuple]:
@@ -43,3 +28,68 @@ def is_double_negative(_, oper, right) -> bool:
 def is_none_compare(_, oper, right) -> bool:
     """ Comparison is not sufficiently specific, e.g. `val is not None` """
     return isinstance(oper, ast.IsNot) and right is None
+
+
+# All checks are enabled by default
+COMPARE_CHECKS = (
+    is_double_negative,
+    is_none_compare,
+)
+
+
+def run_compare_checks(expr: ast.Compare, checks=COMPARE_CHECKS):
+    """ Runs all comparison checks and returns those which fail """
+    failing = []
+    # On all the comparisons in the expression, find the failing checks
+    for left, oper, right in get_all_compares(expr):
+        for check in checks:
+            if check(left, oper, right):
+                failing.append(check.__doc__)  # Docstring used as error msg
+    return failing
+
+
+""" Checks for constant expressions """
+
+
+def is_true(const: ast.NameConstant):
+    """ Constant expression will never fail, e.g. `assert True` """
+    return const.value == True
+
+def is_false(const: ast.NameConstant):
+    """ Constant expression will always fail, e.g. `assert False` """
+    return const.value == False
+
+CONSTANT_CHECKS = (
+    is_true,
+    is_false
+)
+
+def run_constant_checks(expr: ast.NameConstant, checks=CONSTANT_CHECKS):
+    """ Runs all constant checks and returns those which fail """
+    failing = []
+    for check in checks:
+        if check(expr):
+            failing.append(check.__doc__)
+    return failing
+
+
+""" Checks for boolean operations """
+
+
+def has_too_many_ands(expr: ast.BoolOp):
+    """ Too many `and` statements; should be multiple assertions """
+    return len(expr.values) > 2
+
+
+BOOL_OP_CHECKS = (
+    has_too_many_ands,
+)
+
+
+def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
+    """ Runs all constant checks and returns those which fail """
+    failing = []
+    for check in checks:
+        if check(expr):
+            failing.append(check.__doc__)
+    return failing

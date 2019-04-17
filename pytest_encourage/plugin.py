@@ -20,6 +20,7 @@ def pytest_runtest_logstart(nodeid, location):
         print("{line}:{column} -- {message} ({symbol})".format(**message))
 
 def pytest_runtest_call(item):
+    """Runs when pytest starts running a hook function"""
     tree = ast.parse(inspect.getsource(item.function))
     for node in ast.walk(tree):
         if isinstance(node, ast.Assert):

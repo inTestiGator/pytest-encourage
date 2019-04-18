@@ -9,5 +9,6 @@ if __name__ == "__main__":
     for i in range(1,10):
         powers.append(2 ** i)
 
-def test_non():
-    
+def test_none():
+    purse = []
+    assert purse is not none

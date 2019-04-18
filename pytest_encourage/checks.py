@@ -99,4 +99,5 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
             failing.append(check.__doc__)
     return failing
 
-def is_len_checks(expr: ast.)
+def is_len_checks(_, oper, right) -> bool:
+    """ Checks the length of a container"""

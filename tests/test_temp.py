@@ -19,3 +19,10 @@ def test_comparechecks_fail():
    cat = " "
    dog = "a"
    assert cat == dog
+
+ def test_isTrue_constant():
+     """Tests check for constantly true comparisions"""
+     constant = 5
+     assert constant is True
+
+ 

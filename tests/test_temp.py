@@ -1,4 +1,5 @@
 """Collection of tests for our checks"""
+from pytest_encourage import checks
 
 def test_temp():
     if True:
@@ -18,11 +19,5 @@ def test_comparechecks_fail():
    """Tests check for failing Comparisons"""
    cat = " "
    dog = "a"
+   checks.run_compare_checks()
    assert cat == dog
-
- def test_isTrue_constant():
-     """Tests check for constantly true comparisions"""
-     constant = 5
-     assert constant is True
-
- 

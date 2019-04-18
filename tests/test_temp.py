@@ -28,14 +28,15 @@ def test_too_many_and():
     cow = "2"
     tiger = "2"
     assert pig == cow & cow == tiger & pig == tiger
+
 def test_is_len_checks():
     """tests the len check"""
     book = ["A", "B", "C", "D"]
     assert len(book) == 4
-    
+
 def test_bool_checks():
     """Tests boolean checks"""
-
+    
 def test_false_checks():
     """Tests false checks"""
 

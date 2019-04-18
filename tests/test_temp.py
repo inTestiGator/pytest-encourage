@@ -1,5 +1,5 @@
 """Collection of tests for our checks"""
-from pytest_encourage import checks
+#from pytest_encourage import checks
 
 def test_temp():
     if True:
@@ -21,3 +21,9 @@ def test_comparechecks_fail():
    dog = "a"
    checks.run_compare_checks()
    assert cat == dog
+
+def test_too_many_and():
+    """Tests check for too many ands"""
+
+def test_is_len_checks():
+    """tests the len check"""

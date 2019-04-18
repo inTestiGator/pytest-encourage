@@ -10,5 +10,12 @@ if __name__ == "__main__":
         powers.append(2 ** i)
 
 def test_none():
+    """Tests not none check"""
     purse = []
     assert purse is not none
+
+def test_comparechecks_fail():
+   """Tests check for failing Comparisons"""
+   cat = " "
+   dog = "a"
+   assert cat == dog

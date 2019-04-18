@@ -15,6 +15,14 @@ AUTHOR = 'Jahlia Finney, Aubrey Collins, Elisia Wright, Jared Scklenski, Chih Ju
 AUTHOR_EMAIL= 'finneyj@allegheny.edu, collinsa@allegheny.edu, chenc@allegheny.edu, wrighte@allegheny.edu, scklenskij@allegheny.edu'
 URL = 'https://github.com/inTestiGator/pytest-encourage'
 
+
+def read(filename):
+    """ This function is reads in the file with the file path """
+    filepath = os.path.join(os.path.dirname(__file__), filename)
+    with io.open(filepath, mode="r", encoding="utf-8") as f:
+    return f.read()
+
+
 # Where it all begins
 setup(
     name=NAME,

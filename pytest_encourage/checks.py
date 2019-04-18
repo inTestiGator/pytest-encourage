@@ -98,3 +98,5 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
         if check(expr):
             failing.append(check.__doc__)
     return failing
+
+def is_len_checks(expr: ast.)

@@ -24,10 +24,15 @@ def test_comparechecks_fail():
 
 def test_too_many_and():
     """Tests check for too many ands"""
-
+    pig = "2"
+    cow = "2"
+    tiger = "2"
+    assert pig == cow & cow == tiger & pig == tiger
 def test_is_len_checks():
     """tests the len check"""
-
+    book = ["A", "B", "C", "D"]
+    assert len(book) == 4
+    
 def test_bool_checks():
     """Tests boolean checks"""
 

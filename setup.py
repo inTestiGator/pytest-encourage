@@ -29,7 +29,7 @@ setup(
     version=VERSION,
     description=DESCRIPTION,
     license=LICENSE,
-    long_description=read('README.md'),
+    long_description=read('README.rst'),
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     url=URL,

@@ -27,3 +27,12 @@ def test_too_many_and():
 
 def test_is_len_checks():
     """tests the len check"""
+
+def test_bool_checks():
+    """Tests boolean checks"""
+
+def test_false_checks():
+    """Tests false checks"""
+
+def test_true_checks():
+    """Tests true checks"""

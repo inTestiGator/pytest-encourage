@@ -1,0 +1,14 @@
+Metadata-Version: 1.1
+Name: pytest-encourage
+Version: 0.1.0
+Summary: A pytest plugin used for testing data coverage and providing positive reinforcement.
+Home-page: https://github.com/inTestiGator/pytest-encourage
+Author: Jahlia Finney, Aubrey Collins, Elisia Wright, Jared Scklenski, Chih Jung Chen
+Author-email: finneyj@allegheny.edu, collinsa@allegheny.edu, chenc@allegheny.edu, wrighte@allegheny.edu, scklenskij@allegheny.edu
+License: GNU GPLv3
+Description: # pytest-encourage
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Framework :: Pytest
+Classifier: Programming Language :: Python
+Classifier: Operating System :: OS Independent

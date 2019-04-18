@@ -1,3 +1,5 @@
+"""Collection of tests for our checks"""
+
 def test_temp():
     if True:
         assert True != False

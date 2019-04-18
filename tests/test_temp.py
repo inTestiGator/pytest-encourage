@@ -8,3 +8,6 @@ if __name__ == "__main__":
     powers = []
     for i in range(1,10):
         powers.append(2 ** i)
+
+def test_non():
+    

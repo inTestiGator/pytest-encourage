@@ -20,8 +20,12 @@ sys.path.insert(0, MYPATH + "/../")
 
 @pytest.fixture(scope="session")
 def​ generate_json(tmpdir_factory):
-    """ make a temp directory in jason"""
-    a_dir = tmpdir_factory.mktemp('mydir')
-    a_file = a_dir.join('something.txt')
-    a_file.write('contents may settle during shipping')
-    another_file.write('something different')
+    """ make a temp directory in json"""
+    a_dir = tmpdir_factory.mktemp('mydir') # make a new directory ti store temp files
+    a_file = a_dir.join('copieddata.json') # make a file in the a_dir directory
+    # read the file and save it as data
+    with open(MYPATH, 'a') as data:
+    jdata = json.dumps(data) # convert data to json
+    a_file.write(jdata) # save jdata in a_file
+
+    return jdata

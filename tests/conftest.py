@@ -29,3 +29,4 @@ def​ generate_json(tmpdir_factory):
     a_file.write(jdata) # save jdata in a_file
 
     return a_file
+    # assert a_file.read() == jdata

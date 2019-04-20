@@ -1,5 +1,5 @@
 """Collection of tests for our checks"""
-#from pytest_encourage import checks
+from pytest_encourage import checks
 
 def test_temp():
     if True:
@@ -36,7 +36,7 @@ def test_is_len_checks():
 
 def test_bool_checks():
     """Tests boolean checks"""
-    
+
 def test_false_checks():
     """Tests false checks"""
 

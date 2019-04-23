@@ -1,5 +1,6 @@
 """Collection of tests for our checks"""
 from pytest_encourage import checks
+import pytest
 
 def test_temp():
     if True:
@@ -13,13 +14,13 @@ if __name__ == "__main__":
 def test_none():
     """Tests not none check"""
     purse = []
-    assert purse is not none
+    checks.is_none_compare(left, oper, right)
+    ast.parse(assert purse is not none)
 
 def test_comparechecks_fail():
    """Tests check for failing Comparisons"""
    cat = " "
    dog = "a"
-   checks.run_compare_checks()
    assert cat == dog
 
 def test_too_many_and():
@@ -39,6 +40,8 @@ def test_bool_checks():
 
 def test_false_checks():
     """Tests false checks"""
+    assert False
 
 def test_true_checks():
     """Tests true checks"""
+    assert True

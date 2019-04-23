@@ -1,7 +1,7 @@
 """ Defines several checks to assess the quality of assertions """
 import ast
 from typing import Iterator
-from customtypes import ASTValue, Comparison
+from .customtypes import ASTValue, Comparison
 
 
 # Checks to be run when the expression being asserted is a comparison

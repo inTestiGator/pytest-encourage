@@ -15,7 +15,7 @@ def test_none():
     """Tests not none check"""
     purse = []
     checks.is_none_compare(left, oper, right)
-    ast.parse(assert purse is not none)
+    ast.parse("assert purse is not none")
 
 def test_comparechecks_fail():
    """Tests check for failing Comparisons"""

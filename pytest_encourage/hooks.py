@@ -10,6 +10,7 @@ import tempfile
 
 from pytest_encourage.util import filter_assertions
 
+
 def pytest_runtest_logstart(nodeid, location):
     """ signal the start of running a single test item.
 
@@ -22,7 +23,8 @@ def pytest_runtest_logstart(nodeid, location):
     # file = os.path.basename(nodeid)
     # name = os.path.splitext(location)[0]
 
-def run_pylint(script_path, cwd='.'):
+
+def run_pylint(script_path, cwd="."):
     # script_path pulled from nodeid?
     # just leveraged this, needs work
     """Execute a script from a working directory.
@@ -31,11 +33,12 @@ def run_pylint(script_path, cwd='.'):
     """
     # calls and runs pylint
     from pylint import epylint as lint
-    (pylint_stdout, pylint_stderr) = lint.py_run('module_name.py', return_std=True)
+
+    (pylint_stdout, pylint_stderr) = lint.py_run("module_name.py", return_std=True)
 
     # leveraged code
-    run_thru_shell = sys.platform.startswith('pyl')
-    if script_path.endswith('.py'):
+    run_thru_shell = sys.platform.startswith("pyl")
+    if script_path.endswith(".py"):
         script_command = [sys.executable, script_path]
     else:
         script_command = [script_path]
@@ -43,21 +46,13 @@ def run_pylint(script_path, cwd='.'):
     utils.make_executable(script_path)
 
     try:
-        proc = subprocess.Popen(
-            script_command,
-            shell=run_thru_shell,
-            cwd=cwd
-        )
+        proc = subprocess.Popen(script_command, shell=run_thru_shell, cwd=cwd)
         exit_status = proc.wait()
         if exit_status != EXIT_SUCCESS:
             raise FailedHookException(
-                'Hook script failed (exit status: {})'.format(exit_status)
+                "Hook script failed (exit status: {})".format(exit_status)
             )
     except OSError as os_error:
         if os_error.errno == errno.ENOEXEC:
-            raise FailedHookException(
-                'Hook script failed, might be an empty file'
-            )
-        raise FailedHookException(
-            'Hook script failed (error: {})'.format(os_error)
-        )
+            raise FailedHookException("Hook script failed, might be an empty file")
+        raise FailedHookException("Hook script failed (error: {})".format(os_error))

@@ -1,7 +1,7 @@
 """ Defines several checks to assess the quality of assertions """
 import ast
 from typing import Iterator
-from .types import ASTValue, Comparison
+from .customtypes import Comparison
 
 
 # Checks to be run when the expression being asserted is a comparison
@@ -14,6 +14,7 @@ def get_all_compares(expr: ast.Compare) -> Iterator[Comparison]:
 
     # If each AST value is a wrapper for True / False / None, assign it to the
     # value it's wrapping
+
     values = [v.value if isinstance(v, ast.NameConstant) else v for v in values]
 
     # Create an iterator representing each individual comparison as a tuple
@@ -32,10 +33,7 @@ def is_none_compare(_, oper, right) -> bool:
 
 
 # All checks are enabled by default
-COMPARE_CHECKS = (
-    is_double_negative,
-    is_none_compare,
-)
+COMPARE_CHECKS = (is_double_negative, is_none_compare)
 
 
 def run_compare_checks(expr: ast.Compare, checks=COMPARE_CHECKS):
@@ -54,18 +52,15 @@ def run_compare_checks(expr: ast.Compare, checks=COMPARE_CHECKS):
 
 def is_true(const: ast.NameConstant) -> bool:
     """ Constant expression will never fail, e.g. `assert True` """
-    return const.value == True
+    return const.value
 
 
 def is_false(const: ast.NameConstant) -> bool:
     """ Constant expression will always fail, e.g. `assert False` """
-    return const.value == False
+    return const.value
 
 
-CONSTANT_CHECKS = (
-    is_true,
-    is_false
-)
+CONSTANT_CHECKS = (is_true, is_false)
 
 
 def run_constant_checks(expr: ast.NameConstant, checks=CONSTANT_CHECKS):
@@ -86,9 +81,7 @@ def has_too_many_ands(expr: ast.BoolOp) -> bool:
     return len(expr.values) > 2
 
 
-BOOL_OP_CHECKS = (
-    has_too_many_ands,
-)
+BOOL_OP_CHECKS = (has_too_many_ands,)
 
 
 def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
@@ -98,3 +91,8 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
         if check(expr):
             failing.append(check.__doc__)
     return failing
+
+
+def is_len_checks(_, oper, right) -> bool:
+    """ Checks the length of a container"""
+    return isinstance(oper, ast.IsLen)

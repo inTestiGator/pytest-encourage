@@ -1,6 +1,7 @@
 """Configuration file for the test suite"""
 import os
 import sys
+
 GO_BACK_A_DIRECTORY = "/../"
 GO_INTO_DIRECTORY = "pytest_encourage"
 

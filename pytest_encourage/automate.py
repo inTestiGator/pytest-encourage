@@ -8,7 +8,7 @@ from pylint.checkers import base
 from checks import is_double_negative
 
 
-def runChecks(item):
+def run_checks(item):
     """find double negative"""
     task = ast.parse(inspect.getsource(item.function))
     for node in ast.walk(tree):

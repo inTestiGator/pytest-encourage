@@ -39,7 +39,7 @@ def test_too_many_and():
     pig = "2"
     cow = "2"
     tiger = "2"
-    assert pig == cow & cow == tiger & pig == tiger
+    assert pig == cow and cow == tiger and pig == tiger
 
 
 def test_is_len_checks():

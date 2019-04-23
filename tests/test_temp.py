@@ -57,7 +57,10 @@ def test_bool_checks():
 
 def test_false_checks():
     """Tests false checks"""
-    assert False
+    node = ast.parse("assert True")
+    assertion = node.body[0]
+    falcheck = assertion.test
+    assert checks.is_true(falcheck)
 
 
 def test_true_checks():

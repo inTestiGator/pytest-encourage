@@ -1,6 +1,7 @@
 """Collection of tests for our checks"""
 from pytest_encourage import checks
 import pytest
+import ast
 
 
 def test_temp():
@@ -16,9 +17,14 @@ if __name__ == "__main__":
 
 def test_none():
     """Tests not none check"""
-    purse = []
-    checks.is_none_compare(left, oper, right)
-    ast.parse("assert purse is not none")
+
+    node = ast.parse("purse = ['h']; assert purse is not None")
+    assertion = node.body
+    assertion = node.body[1]
+    compareA = assertion.test
+    assertlist = checks.run_compare_checks(compareA)
+    assert assertlist == [checks.is_none_compare.__doc__]
+    print(node)
 
 
 def test_comparechecks_fail():

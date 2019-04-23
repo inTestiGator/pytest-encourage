@@ -14,6 +14,7 @@ def get_all_compares(expr: ast.Compare) -> Iterator[Comparison]:
 
     # If each AST value is a wrapper for True / False / None, assign it to the
     # value it's wrapping
+
     values = [v.value if isinstance(v, ast.NameConstant) else v for v in values]
 
     # Create an iterator representing each individual comparison as a tuple
@@ -51,12 +52,12 @@ def run_compare_checks(expr: ast.Compare, checks=COMPARE_CHECKS):
 
 def is_true(const: ast.NameConstant) -> bool:
     """ Constant expression will never fail, e.g. `assert True` """
-    return const.value == True
+    return const.value
 
 
 def is_false(const: ast.NameConstant) -> bool:
     """ Constant expression will always fail, e.g. `assert False` """
-    return const.value == False
+    return const.value
 
 
 CONSTANT_CHECKS = (is_true, is_false)

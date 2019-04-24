@@ -10,11 +10,11 @@ from checks import is_double_negative
 
 def run_checks(item):
     """find double negative"""
-    task = ast.parse(inspect.getsource(item.function))
+    task = ast.parse(inspect.getsource(item.function)) # task
     for node in ast.walk(tree):
         if isinstance(node, ast.Assert):
             if isinstance(node.test, ast.Compare):
-                checks.is_double_negative()
+                is_double_negative() # need to give it three parameters
 
 
 def getpylint_output(path_to_file):

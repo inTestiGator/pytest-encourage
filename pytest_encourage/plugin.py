@@ -13,11 +13,14 @@ GO_INTO_DIRECTORY = "pytest_encourage"
 MYPATH = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, MYPATH + GO_BACK_A_DIRECTORY + GO_INTO_DIRECTORY)
 
-def pytest_runtest_logstart(nodeid, location):
+
+def pytest_runtest_logstart(location):
+    # removed `nodeid` from input as it is an unused argument
     filepath, _, _ = location
     messages = getpylint_output(filepath)
     for message in filter_assertions(messages):
         print("{line}:{column} -- {message} ({symbol})".format(**message))
+
 
 def pytest_runtest_call(item):
     tree = ast.parse(inspect.getsource(item.function))
@@ -25,4 +28,4 @@ def pytest_runtest_call(item):
         if isinstance(node, ast.Assert):
             if isinstance(node.test, ast.Compare):
                 print(is_double_negative(node.test))
-    raise Exception() # Force PyTest to display what we printed
+    raise Exception()  # Force PyTest to display what we printed

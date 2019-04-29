@@ -38,11 +38,12 @@ def test_too_many_and():
     pig = "2"
     cow = "2"
     tiger = "2"
-    node = ast.parse("pig = '2'; cow = '2'; tiger = '2'; assert pig == cow and cow == tiger and pig == tiger")
+    node = ast.parse(
+        "pig = '2'; cow = '2'; tiger = '2'; assert pig == cow and cow == tiger and pig == tiger"
+    )
     assertion = node.body[3]
     compareTooMany = assertion.test
     assert checks.has_too_many_ands(compareTooMany)
-
 
 
 def test_is_len_checks():

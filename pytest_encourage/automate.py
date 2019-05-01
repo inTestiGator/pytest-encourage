@@ -13,7 +13,7 @@ def runChecks(item):
     task = ast.parse(inspect.getsource(item.function))
     for node in ast.walk(tree):
         if isinstance(node, ast.Assert): #condition for assertion statements
-            if isinstance(node.test, ast.Compare):
+            if isinstance(node.test, ast.Compare): #condition for comparisons
                 checks.is_double_negative()
 
 

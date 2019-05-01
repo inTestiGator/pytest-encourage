@@ -9,9 +9,10 @@ from checks import is_double_negative
 
 
 def runChecks(item):
+    """Function that calls the tool's checks"""
     task = ast.parse(inspect.getsource(item.function))
     for node in ast.walk(tree):
-        if isinstance(node, ast.Assert):
+        if isinstance(node, ast.Assert): #condition for assertion statements
             if isinstance(node.test, ast.Compare):
                 checks.is_double_negative()
 

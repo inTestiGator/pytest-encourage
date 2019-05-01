@@ -31,3 +31,37 @@ is_false=true
 has_too_many_ands=true
     """)
     return str(config)
+
+
+@pytest.fixture
+def temp_config_file_empty(tmpdir):
+    """ Fixture to generate a temporary config file and return its path """
+    config = tmpdir.join(".encouragerc")
+    config.write("""\
+[comparison checks]
+
+[constant checks]
+
+[boolean operation checks]
+    """)
+    return str(config)
+
+
+@pytest.fixture
+def temp_config_file_all_disabled(tmpdir):
+    """ Fixture to generate a temporary config file and return its path """
+    config = tmpdir.join(".encouragerc")
+    config.write("""\
+[comparison checks]
+is_double_negative=false
+is_none_compare=false
+is_len_check=false
+
+[constant checks]
+is_true=false
+is_false=false
+
+[boolean operation checks]
+has_too_many_ands=false
+    """)
+    return str(config)

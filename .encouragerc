@@ -1,1 +1,11 @@
+[comparison checks]
+is_double_negative=true
+is_none_compare=true
+is_len_check=true
 
+[constant checks]
+is_true=true
+is_false=true
+
+[boolean operation checks]
+has_too_many_ands=true

@@ -1,7 +1,24 @@
 """ Defines several checks to assess the quality of assertions """
 import ast
-from typing import Iterator, Dict
+import inspect
+from typing import Iterator, Dict, List
 from .customtypes import Comparison
+
+
+def run_checks(test_fn: callable, **kwargs) -> List[str]:
+    """ Runs all the enabled checks on the specified test function """
+    tree = ast.parse(inspect.getsource(test_fn))
+    checks = get_enabled_checks_from_config(**kwargs)
+    failing = []
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Assert):
+            if isinstance(node.test, ast.Compare):
+                failing += run_compare_checks(node, checks=checks["COMPARE"])
+            elif isinstance(node.test, ast.Constant):
+                failing += run_constant_checks(node, checks=checks["CONSTANT"])
+            elif isinstance(node.test, ast.BoolOp):
+                failing += run_bool_op_checks(node.test, checks=checks["BOOL"])
+    return failing
 
 
 def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, callable]:

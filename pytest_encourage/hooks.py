@@ -1,14 +1,14 @@
 """Functions for discovering and executing hooks."""
 
 import errno
-import io
-import logging
-import os
+# unused import io
+# unused import logging
+# unused import os
 import subprocess
 import sys
-import tempfile
+# unused import tempfile
 
-from pytest_encourage.util import filter_assertions
+# unused from pytest_encourage.util import filter_assertions
 
 
 def pytest_runtest_logstart(nodeid, location):
@@ -33,7 +33,7 @@ def run_pylint(script_path, cwd="."):
     """
     # calls and runs pylint
     from pylint import epylint as lint
-
+    # pilint_stdout, pylint_stderr unused
     (pylint_stdout, pylint_stderr) = lint.py_run("module_name.py", return_std=True)
 
     # leveraged code
@@ -43,7 +43,7 @@ def run_pylint(script_path, cwd="."):
     else:
         script_command = [script_path]
 
-    utils.make_executable(script_path)
+    utils.make_executable(script_path) # utils unused
 
     try:
         proc = subprocess.Popen(script_command, shell=run_thru_shell, cwd=cwd)

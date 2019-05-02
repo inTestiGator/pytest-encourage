@@ -2,13 +2,15 @@
 import ast
 from typing import Iterator, Dict
 from .customtypes import Comparison
-
+import configparser
 
 def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, callable]:
     """ Reads the config file and determines which checks are enabled.
         Returns a dictionary whose keys are 'COMPARE', 'CONSTANT', and 'BOOL',
         and whose values are lists containing the check functions which are enabled. """
         # Unused argument 'config_path'
+    config.read(config_path=".encouragerc")
+    print(config.read())
     pass # Unnecessary pass statement
 
 # Checks to be run when the expression being asserted is a comparison

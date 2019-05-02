@@ -34,17 +34,13 @@ def test_comparechecks_fail():
 
 
 def test_too_many_and():
-    """Tests check for too many ands"""
-    pig = "2"
-    cow = "2"
-    tiger = "2"
+    """Tests check for too many ands""""
     node = ast.parse(
         "pig = '2'; cow = '2'; tiger = '2'; assert pig == cow and cow == tiger and pig == tiger"
     )
     assertion = node.body[3]
     compareTooMany = assertion.test
     assert checks.has_too_many_ands(compareTooMany)
-
 
 def test_is_len_checks():
     """tests the len check"""

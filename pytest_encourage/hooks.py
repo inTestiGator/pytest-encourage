@@ -13,8 +13,8 @@ from pytest_encourage.util import filter_assertions
 
 def pytest_runtest_logstart(nodeid, location):
     """ signal the start of running a single test item.
-
-    This hook will be called **before** :func:`pytest_runtest_setup`, :func:`pytest_runtest_call` and
+    This hook will be called
+    **before** :func:`pytest_runtest_setup`, :func:`pytest_runtest_call` and
     :func:`pytest_runtest_teardown` hooks.
 
     :param str nodeid: full id of the item

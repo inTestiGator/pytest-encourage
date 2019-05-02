@@ -8,7 +8,8 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
     """ Reads the config file and determines which checks are enabled.
         Returns a dictionary whose keys are 'COMPARE', 'CONSTANT', and 'BOOL',
         and whose values are lists containing the check functions which are enabled. """
-    pass
+        # Unused argument 'config_path'
+    pass # Unnecessary pass statement
 
 # Checks to be run when the expression being asserted is a comparison
 
@@ -98,6 +99,6 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
     return failing
 
 
-def is_len_checks(_, oper, right) -> bool:
+def is_len_checks(_, oper, right) -> bool: # Unused argument 'right'
     """ Checks the length of a container"""
-    return isinstance(oper, ast.IsLen)
+    return isinstance(oper, ast.IsLen) # Module 'ast' has no 'IsLen'

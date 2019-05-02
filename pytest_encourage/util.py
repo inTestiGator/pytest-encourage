@@ -36,7 +36,7 @@ def filter_assertions(msgs: Union[str, List[LintMsg]]) -> List[LintMsg]:
 
 
 def main():
-    """"""
+    """main"""
     filtered_output = getpylint_output()
     filter_assertions(filtered_output)
     print(filter_assertions(filtered_output))

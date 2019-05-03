@@ -30,6 +30,7 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
     config = configparser.ConfigParser()
     config.read(config_path)
     config.sections()
+    config(".encouragerc")
     display = config.sections()
     names = []
     print(display)

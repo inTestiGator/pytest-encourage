@@ -10,6 +10,7 @@ PREVIOUS_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, PREVIOUS_DIRECTORY + GO_BACK_A_DIRECTORY + GO_INTO_DIRECTORY)
 
 
+# pylint: disable=C0103
 pytest_plugins = ["pytester"]
 
 
@@ -71,3 +72,37 @@ has_too_many_ands=false
     """
     )
     return str(config)
+
+
+@pytest.fixture
+def fails_compare_checks():
+    """ Returns a function designed to fail compare checks """
+
+    def _failing_test():
+        # pylint: disable=E0712
+        # pylint: disable=C0121
+        assert True != False  # noqa: E721
+        assert [] is not None  # Compare to None
+
+    return _failing_test
+
+
+@pytest.fixture
+def fails_constant_checks():
+    """ Returns a function designed to fail compare checks """
+
+    def _failing_test():
+        assert True
+        assert False
+
+    return _failing_test
+
+
+@pytest.fixture
+def fails_bool_op_checks():
+    """ Returns a function designed to fail compare checks """
+
+    def _failing_test():
+        assert True and True and True and True  # too many "and"s
+
+    return _failing_test

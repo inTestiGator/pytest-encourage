@@ -16,7 +16,8 @@ env:
     - PIPENV_IGNORE_VIRTUALENVS=1
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
-    - secure: 2c0250fb-dfb1-45c9-abaf-cd3d874326c5
+    - secure: RMk7y97Rxn2rAFhDyNlRCrN8V9SdttcA603Hm4eHUWvJm8dYT8UN7+nSnxH8v2QDaEndaMzrEi9uOsEZ7xyJTXmabN2aXjlqGE+C5LDzBRNCU9gc0DcEwJ2JM1TQiSk0G3xFgy867FBevqLJ8QkE4Tp2i+3Z4v00hp+FbUtYxuslO9ImlvSgClTJzguoEl1ZlSMcy92V5yivrJWmwqdJ4PSNI2rYhlszOMjyf+oAuiNtYifNdmrLwkNI6ThzHjaHNVE+wP1jVU5BKeFn6NrU+oIcynJj30u768MveCBUlpG6UdCsUnnriQUuHKOPv8soOMCLP45hrqKsWSnhaUQHV7AxCqco6c1Pgd9tgXVydpNlBJ3UjhXWP99NaKstwQreHAoYSCZW2lsezrqn6M6ZtXw9WGlU02yNLDljehbo/hrfh9gnP+DRlMf70QKeGeL11hxNCJYZ+g486fyBEYMeN/zWYggr07iO8+3aMuBYGorTe3W8p0HM6moy245jF7NM/a1nUG6CGDb1bRtWLAymv+oGi21TTFf8F34YD1MbFQXMO62BhNJucvyy0mTf5KP2AXSqozLloiehg7V75W9xp/WMY17fSXsNZDWAZssMKAeku4Knqoq4p1NAtNx/+lQMJofnuPligd0fuLH/NzV+cG+ytcEt0z0BHKOFUUv8XtM=
+
 
 # install mdl for checking Markdown
 before_install:
@@ -29,6 +30,7 @@ notifications:
 install:
   - pip install --upgrade pip
   - pip install --upgrade pipenv
+  - pip install --upgrade codecov
   - pipenv install --dev
 
 # perform testing:
@@ -49,4 +51,4 @@ script:
 
 # report coverage information to CodeCov
 after_success:
-  - pipenv run codecov
+  - codecov

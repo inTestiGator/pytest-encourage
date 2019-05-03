@@ -30,7 +30,10 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
     config = configparser.ConfigParser()
     config.read(config_path=".encouragerc")
     display = config.sections()
+    names = []
     for x in get_all_compares():
+        if check.__name__ in config.sections() == True:
+            names.append(check.__doc__)
     print(display)
     pass # Unnecessary pass statement
 

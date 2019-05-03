@@ -46,7 +46,8 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
         if check.__name__ in display:
             names.append(check.__doc__)
             print(names)
-    pass # Unnecessary pass statement
+    pass  # Unnecessary pass statement
+
 
 # Checks to be run when the expression being asserted is a comparison
 

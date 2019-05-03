@@ -17,7 +17,8 @@ pytest_plugins = ["pytester"]
 def temp_config_file_all_enabled(tmpdir):
     """ Fixture to generate a temporary config file and return its path """
     config = tmpdir.join(".encouragerc")
-    config.write("""\
+    config.write(
+        """\
 [comparison checks]
 is_double_negative=true
 is_none_compare=true
@@ -29,7 +30,8 @@ is_false=true
 
 [boolean operation checks]
 has_too_many_ands=true
-    """)
+    """
+    )
     return str(config)
 
 
@@ -37,13 +39,15 @@ has_too_many_ands=true
 def temp_config_file_empty(tmpdir):
     """ Fixture to generate a temporary config file and return its path """
     config = tmpdir.join(".encouragerc")
-    config.write("""\
+    config.write(
+        """\
 [comparison checks]
 
 [constant checks]
 
 [boolean operation checks]
-    """)
+    """
+    )
     return str(config)
 
 
@@ -51,7 +55,8 @@ def temp_config_file_empty(tmpdir):
 def temp_config_file_all_disabled(tmpdir):
     """ Fixture to generate a temporary config file and return its path """
     config = tmpdir.join(".encouragerc")
-    config.write("""\
+    config.write(
+        """\
 [comparison checks]
 is_double_negative=false
 is_none_compare=false
@@ -63,5 +68,6 @@ is_false=false
 
 [boolean operation checks]
 has_too_many_ands=false
-    """)
+    """
+    )
     return str(config)

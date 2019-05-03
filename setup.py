@@ -10,9 +10,9 @@ from setuptools import setup
 NAME = 'pytest-encourage'
 VERSION = '0.1.0'
 DESCRIPTION = 'A pytest plugin used for testing data coverage and providing positive reinforcement.'
-LICENSE='GNU GPLv3'
+LICENSE= 'GNU GPLv3'
 AUTHOR = 'Jahlia Finney, Aubrey Collins, Elisia Wright, Jared Scklenski, Chih Jung Chen'
-AUTHOR_EMAIL= 'finneyj@allegheny.edu, collinsa@allegheny.edu, chenc@allegheny.edu, wrighte@allegheny.edu, scklenskij@allegheny.edu'
+AUTHOR_EMAIL = 'finneyj@allegheny.edu, collinsa@allegheny.edu, chenc@allegheny.edu, wrighte@allegheny.edu, scklenskij@allegheny.edu'
 URL = 'https://github.com/inTestiGator/pytest-encourage'
 
 

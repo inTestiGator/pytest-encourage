@@ -1,7 +1,6 @@
 """ Utility functions """
 import json
 from typing import List, Dict, Union
-from .automate import getpylint_output
 
 
 def read_source_file(filepath: str) -> List[str]:

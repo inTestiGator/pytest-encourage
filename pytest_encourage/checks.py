@@ -2,8 +2,9 @@
 import ast
 import inspect
 from typing import Iterator, Dict, List
-from .customtypes import Comparison
+import customtypes as types
 import configparser
+
 
 def run_checks(test_fn: callable, **kwargs) -> List[str]:
     """ Runs all the enabled checks on the specified test function """
@@ -23,16 +24,23 @@ def run_checks(test_fn: callable, **kwargs) -> List[str]:
 
 def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, callable]:
     """ Reads the config file and determines which checks are enabled.
-        Returns a dictionary whose keys are 'COMPARE', 'CONSTANT', and 'BOOL',
-        and whose values are lists containing the check functions which are enabled. """
-        # Unused argument 'config_path'
+    Returns a dictionary whose keys are 'COMPARE', 'CONSTANT', and 'BOOL',
+    and whose values are lists containing the check functions which are enabled. """
+    # Unused argument 'config_path'
+    config = configparser.ConfigParser()
     config.read(config_path=".encouragerc")
-    print(config.read())
+    display = config.sections()
+    names = []
+    for x in get_all_compares():
+        if check.__name__ in config.sections() == True:
+            names.append(check.__doc__)
+    print(display)
     pass # Unnecessary pass statement
 
 # Checks to be run when the expression being asserted is a comparison
 
-def get_all_compares(expr: ast.Compare) -> Iterator[Comparison]:
+
+def get_all_compares(expr: ast.Compare) -> Iterator[types.Comparison]:
     """ Yields each individual compare from a compound compare expression.
         e.g., the compound compare 1 < 2 < 3 would yield 1 < 2 and 2 < 3. """
     values = [expr.left] + expr.comparators
@@ -118,6 +126,6 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
     return failing
 
 
-def is_len_checks(_, oper, right) -> bool: # Unused argument 'right'
+def is_len_checks(_, oper, right) -> bool:  # Unused argument 'right'
     """ Checks the length of a container"""
-    return isinstance(oper, ast.IsLen) # Module 'ast' has no 'IsLen'
+    return isinstance(oper, ast.IsLen)  # Module 'ast' has no 'IsLen'

@@ -42,6 +42,7 @@ def test_too_many_and():
     compareTooMany = assertion.test
     assert checks.has_too_many_ands(compareTooMany)
 
+
 def test_is_len_checks():
     """tests the len check"""
     book = ["A", "B", "C", "D"]

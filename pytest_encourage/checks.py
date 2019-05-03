@@ -29,6 +29,7 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
     config = configparser.ConfigParser()
     config.read(config_path=".encouragerc")
     display = config.sections()
+    for x in get_all_compares():
     print(display)
     pass # Unnecessary pass statement
 

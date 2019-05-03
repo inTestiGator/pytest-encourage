@@ -2,7 +2,8 @@
 import ast
 import inspect
 from typing import Iterator, Dict, List
-from .customtypes import Comparison
+import customtypes as types
+import configparser
 
 
 def run_checks(test_fn: callable, **kwargs) -> List[str]:
@@ -31,14 +32,26 @@ def run_checks(test_fn: callable, **kwargs) -> List[str]:
 
 def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, callable]:
     """ Reads the config file and determines which checks are enabled.
-        Returns a dictionary whose keys are 'COMPARE', 'CONSTANT', and 'BOOL',
-        and whose values are lists containing the check functions which are enabled. """
-        # Unused argument 'config_path'
+    Returns a dictionary whose keys are 'COMPARE', 'CONSTANT', and 'BOOL',
+    and whose values are lists containing the check functions which are enabled. """
+    # Unused argument 'config_path'
+    config = configparser.ConfigParser()
+    config.read(config_path)
+    config.sections()
+    display = config.sections()
+    names = []
+    print(display)
+    for check in COMPARE_CHECKS:
+        print(check.__name__)
+        if check.__name__ in display:
+            names.append(check.__doc__)
+            print(names)
     pass # Unnecessary pass statement
 
 # Checks to be run when the expression being asserted is a comparison
 
-def get_all_compares(expr: ast.Compare) -> Iterator[Comparison]:
+
+def get_all_compares(expr: ast.Compare) -> Iterator[types.Comparison]:
     """ Yields each individual compare from a compound compare expression.
         e.g., the compound compare 1 < 2 < 3 would yield 1 < 2 and 2 < 3. """
     values = [expr.left] + expr.comparators

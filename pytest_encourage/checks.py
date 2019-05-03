@@ -5,6 +5,7 @@ from typing import Iterator, Dict, List
 import customtypes as types
 import configparser
 
+
 def run_checks(test_fn: callable, **kwargs) -> List[str]:
     """ Runs all the enabled checks on the specified test function """
     tree = ast.parse(inspect.getsource(test_fn))
@@ -22,10 +23,10 @@ def run_checks(test_fn: callable, **kwargs) -> List[str]:
 
 
 def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, callable]:
-    """ Reads the config file and determines which checks are enabled.
-        Returns a dictionary whose keys are 'COMPARE', 'CONSTANT', and 'BOOL',
-        and whose values are lists containing the check functions which are enabled. """
-        # Unused argument 'config_path'
+""" Reads the config file and determines which checks are enabled.
+    Returns a dictionary whose keys are 'COMPARE', 'CONSTANT', and 'BOOL',
+    and whose values are lists containing the check functions which are enabled. """
+    # Unused argument 'config_path'
     config = configparser.ConfigParser()
     config.read(config_path=".encouragerc")
     display = config.sections()
@@ -121,6 +122,6 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
     return failing
 
 
-def is_len_checks(_, oper, right) -> bool: # Unused argument 'right'
+def is_len_checks(_, oper, right) -> bool:  # Unused argument 'right'
     """ Checks the length of a container"""
-    return isinstance(oper, ast.IsLen) # Module 'ast' has no 'IsLen'
+    return isinstance(oper, ast.IsLen)  # Module 'ast' has no 'IsLen'

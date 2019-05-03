@@ -10,6 +10,7 @@ PREVIOUS_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, PREVIOUS_DIRECTORY + GO_BACK_A_DIRECTORY + GO_INTO_DIRECTORY)
 
 
+# pylint: disable=C0103
 pytest_plugins = ["pytester"]
 
 
@@ -78,7 +79,9 @@ def fails_compare_checks():
     """ Returns a function designed to fail compare checks """
 
     def _failing_test():
-        assert True != False  # TODO: disable pylint on this line
+        # pylint: disable=E0712
+        # pylint: disable=C0121
+        assert True != False
         assert [] is not None  # Compare to None
 
     return _failing_test

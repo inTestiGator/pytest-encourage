@@ -23,7 +23,7 @@ def run_checks(test_fn: callable, **kwargs) -> List[str]:
 
 
 def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, callable]:
-""" Reads the config file and determines which checks are enabled.
+    """ Reads the config file and determines which checks are enabled.
     Returns a dictionary whose keys are 'COMPARE', 'CONSTANT', and 'BOOL',
     and whose values are lists containing the check functions which are enabled. """
     # Unused argument 'config_path'
@@ -35,6 +35,7 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
     pass # Unnecessary pass statement
 
 # Checks to be run when the expression being asserted is a comparison
+
 
 def get_all_compares(expr: ast.Compare) -> Iterator[types.Comparison]:
     """ Yields each individual compare from a compound compare expression.

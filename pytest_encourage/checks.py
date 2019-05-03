@@ -139,10 +139,5 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
     return failing
 
 
-def is_len_checks(_, oper, right) -> bool:  # Unused argument 'right'
-    """ Checks the length of a container"""
-    return isinstance(oper, ast.IsLen)  # Module 'ast' has no 'IsLen'
-
-
 if __name__ == "__main__":
     get_enabled_checks_from_config()

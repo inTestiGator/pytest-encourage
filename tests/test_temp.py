@@ -1,12 +1,11 @@
 """Collection of tests for our checks"""
 from pytest_encourage import checks
-import pytest
 import ast
 
 
 def test_temp():
     if True:
-        assert True != False
+        assert True != False  # noqa: E721
 
 
 if __name__ == "__main__":
@@ -36,7 +35,7 @@ def test_comparechecks_fail():
 def test_too_many_and():
     """Tests check for too many ands"""
     node = ast.parse(
-        "pig = '2'; cow = '2'; tiger = '2'; assert pig == cow and cow == tiger and pig == tiger"
+        "pig = '2'; cow = '2'; tiger = '2'; assert pig == cow and cow == tiger and pig == tiger"  # noqa: E501
     )
     assertion = node.body[3]
     compareTooMany = assertion.test

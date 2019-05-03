@@ -81,7 +81,7 @@ def fails_compare_checks():
     def _failing_test():
         # pylint: disable=E0712
         # pylint: disable=C0121
-        assert True != False
+        assert True != False  # noqa: E721
         assert [] is not None  # Compare to None
 
     return _failing_test

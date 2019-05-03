@@ -28,13 +28,16 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
     and whose values are lists containing the check functions which are enabled. """
     # Unused argument 'config_path'
     config = configparser.ConfigParser()
-    config.read(config_path=".encouragerc")
+    config.read(config_path)
+    config.sections()
     display = config.sections()
     names = []
-    for x in get_all_compares():
-        if check.__name__ in config.sections() == True:
-            names.append(check.__doc__)
     print(display)
+    for check in COMPARE_CHECKS:
+        print(check.__name__)
+        if check.__name__ in display:
+            names.append(check.__doc__)
+            print(names)
     pass # Unnecessary pass statement
 
 # Checks to be run when the expression being asserted is a comparison
@@ -129,3 +132,6 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
 def is_len_checks(_, oper, right) -> bool:  # Unused argument 'right'
     """ Checks the length of a container"""
     return isinstance(oper, ast.IsLen)  # Module 'ast' has no 'IsLen'
+
+if __name__ == '__main__':
+    get_enabled_checks_from_config(config_path=".encouragerc")

@@ -7,7 +7,15 @@ from .customtypes import Comparison
 
 def run_checks(test_fn: callable, **kwargs) -> List[str]:
     """ Runs all the enabled checks on the specified test function """
-    tree = ast.parse(inspect.getsource(test_fn))
+    test_fn_src = inspect.getsource(test_fn)
+
+    # If function is indented, remove indentation to avoid IndentationError
+    src_lines = test_fn_src.split("\n")
+    if src_lines[0].strip() != src_lines[0]:
+        indent = len(src_lines[0]) - len(src_lines[0].strip())
+        test_fn_src = "\n".join([line[indent:] for line in src_lines])
+
+    tree = ast.parse(test_fn_src)
     checks = get_enabled_checks_from_config(**kwargs)
     failing = []
     for node in ast.walk(tree):
@@ -116,6 +124,6 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
     return failing
 
 
-def is_len_checks(_, oper, right) -> bool: # Unused argument 'right'
+def is_len_checks(_, oper, right) -> bool:  # Unused argument 'right'
     """ Checks the length of a container"""
-    return isinstance(oper, ast.IsLen) # Module 'ast' has no 'IsLen'
+    return isinstance(oper, ast.IsLen)  # Module 'ast' has no 'IsLen'

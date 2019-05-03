@@ -11,7 +11,9 @@ def test_compare_checks():
     """ Tests that comparison checks are working """
 
     def _failing_test():
-        assert True != False  # TODO: disable pylint on this line
+        # pylint: disable=E0712
+        # pylint: disable=C0121
+        assert True != False
         assert [] is not None  # Compare to None
 
     failed = run_checks(_failing_test)

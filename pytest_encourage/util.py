@@ -1,7 +1,6 @@
 """ Utility functions """
 import json
 from typing import List, Dict, Union
-from .automate import getpylint_output
 
 
 def read_source_file(filepath: str) -> List[str]:
@@ -36,7 +35,9 @@ def filter_assertions(msgs: Union[str, List[LintMsg]]) -> List[LintMsg]:
 
 
 def main():
-    """"""
+    """main"""
+    # pylint: disable=E0602
+    # pylint: disable=F821
     filtered_output = getpylint_output()
     filter_assertions(filtered_output)
     print(filter_assertions(filtered_output))

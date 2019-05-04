@@ -1,3 +1,0 @@
-[pytest11]
-encourage = pytest_encourage
-

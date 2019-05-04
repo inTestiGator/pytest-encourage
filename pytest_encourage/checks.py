@@ -1,13 +1,89 @@
 """ Defines several checks to assess the quality of assertions """
 import ast
-from typing import Iterator
-from .customtypes import Comparison
+import inspect
+from typing import Iterator, Dict, List
+import configparser
+import customtypes as types
 
 
+def run_checks(test_fn: callable, **kwargs) -> List[str]:
+    """ Runs all the enabled checks on the specified test function """
+    test_fn_src = inspect.getsource(test_fn)
+
+    # If function is indented, remove indentation to avoid IndentationError
+    src_lines = test_fn_src.split("\n")
+    if src_lines[0].strip() != src_lines[0]:
+        indent = len(src_lines[0]) - len(src_lines[0].strip())
+        test_fn_src = "\n".join([line[indent:] for line in src_lines])
+
+    tree = ast.parse(test_fn_src)
+    # pylint: disable=E1111
+    checks = get_enabled_checks_from_config(**kwargs)
+    failing = []
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Assert):
+            if isinstance(node.test, ast.Compare):
+                failing += run_compare_checks(node, checks=checks["COMPARE"])
+            elif isinstance(node.test, ast.Constant):
+                failing += run_constant_checks(node, checks=checks["CONSTANT"])
+            elif isinstance(node.test, ast.BoolOp):
+                failing += run_bool_op_checks(node.test, checks=checks["BOOL"])
+    return failing
+
+
+def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, callable]:
+    """ Reads the config file and determines which checks are enabled.
+    Returns a dictionary whose keys are 'COMPARE', 'CONSTANT', and 'BOOL',
+    and whose values are lists containing the check functions which are enabled. """
+    # Unused argument 'config_path'
+    config = configparser.ConfigParser()
+    config.read(config_path)
+    names = []
+    print("k")
+    print(config["comparison checks"])
+    for name in config["comparison checks"]:
+        if config["comparison checks"][name] == "true":
+            for check in COMPARE_CHECKS:
+                if check.__name__ == name:
+                    names.append(check.__doc__)
+                    break
+
+    print(names)
 # Checks to be run when the expression being asserted is a comparison
 
+def get_enabled_checks_from_configBool(config_path=".encouragerc"):
+    config = configparser.ConfigParser()
+    config.read(config_path)
+    names = []
+    print("k")
+    print(config["comparison checks"])
+    for name in config["constant checks"]:
+        if config["constant checks"][name] == "true":
+            for check in CONSTANT_CHECKS:
+                if check.__name__ == name:
+                    names.append(check.__doc__)
+                    break
 
-def get_all_compares(expr: ast.Compare) -> Iterator[Comparison]:
+    print(names)
+
+
+def get_enabled_checks_from_configBoolOp(config_path=".encouragerc"):
+    config = configparser.ConfigParser()
+    config.read(config_path)
+    names = []
+    print("k")
+    print(config["comparison checks"])
+    for name in config["BOOL_OP_CHECKS"]:
+        if config["BOOL_OP_CHECKS"][name] == "true":
+            for check in BOOL_OP_CHECKS:
+                if check.__name__ == name:
+                    names.append(check.__doc__)
+                    break
+
+    print(names)
+
+
+def get_all_compares(expr: ast.Compare) -> Iterator[types.Comparison]:
     """ Yields each individual compare from a compound compare expression.
         e.g., the compound compare 1 < 2 < 3 would yield 1 < 2 and 2 < 3. """
     values = [expr.left] + expr.comparators
@@ -93,6 +169,5 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
     return failing
 
 
-def is_len_checks(_, oper, right) -> bool:
-    """ Checks the length of a container"""
-    return isinstance(oper, ast.IsLen)
+if __name__ == "__main__":
+    get_enabled_checks_from_configBoolOp()

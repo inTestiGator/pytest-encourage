@@ -35,7 +35,7 @@ setup(
     url=URL,
     py_modules=['pytest_encourage'],
     install_requires=['pytest'],
-    entry_points={'pytest11': ['encourage = pytest_encourage', ], },
+    entry_points={'pytest11': ['encourage = pytest_encourage.plugin', ], },
     classifiers=[
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Framework :: Pytest',

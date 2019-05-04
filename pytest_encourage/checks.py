@@ -2,8 +2,8 @@
 import ast
 import inspect
 from typing import Iterator, Dict, List
-import customtypes as types
 import configparser
+import customtypes as types
 
 
 def run_checks(test_fn: callable, **kwargs) -> List[str]:
@@ -17,6 +17,7 @@ def run_checks(test_fn: callable, **kwargs) -> List[str]:
         test_fn_src = "\n".join([line[indent:] for line in src_lines])
 
     tree = ast.parse(test_fn_src)
+    # pylint: disable=E1111
     checks = get_enabled_checks_from_config(**kwargs)
     failing = []
     for node in ast.walk(tree):

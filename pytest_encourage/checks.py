@@ -1,9 +1,9 @@
 """ Defines several checks to assess the quality of assertions """
 import ast
 import inspect
-import pytest_encourage.customtypes as types
 import configparser
 from typing import Iterator, Dict, List
+import pytest_encourage.customtypes as types
 
 
 def run_checks(test_fn: callable, **kwargs) -> List[str]:
@@ -17,6 +17,7 @@ def run_checks(test_fn: callable, **kwargs) -> List[str]:
         test_fn_src = "\n".join([line[indent:] for line in src_lines])
 
     tree = ast.parse(test_fn_src)
+    # pylint: disable=E1111
     checks = get_enabled_checks_from_config(**kwargs)
     failing = []
     for node in ast.walk(tree):

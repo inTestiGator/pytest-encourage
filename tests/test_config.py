@@ -26,6 +26,7 @@ def test_check_is_enabled_empty(temp_config_file_empty):
 
 def test_config_file_enables_checks(temp_config_file_all_enabled):
     """ Config file should allow checks to be enabled """
+    # pylint: disable=E1111
     checks = get_enabled_checks_from_config(config_path=temp_config_file_all_enabled)
     assert isinstance(checks, dict)
     assert "COMPARE" in checks
@@ -38,6 +39,7 @@ def test_config_file_enables_checks(temp_config_file_all_enabled):
 
 def test_empty_config_file(temp_config_file_empty):
     """ If the config file is empty, all checks should be enabled """
+    # pylint: disable=E1111
     checks = get_enabled_checks_from_config(config_path=temp_config_file_empty)
     assert isinstance(checks, dict)
     assert "COMPARE" in checks
@@ -50,6 +52,7 @@ def test_empty_config_file(temp_config_file_empty):
 
 def test_config_file_disables_checks(temp_config_file_all_disabled):
     """ Config file should allow checks to be disabled """
+    # pylint: disable=E1111
     checks = get_enabled_checks_from_config(config_path=temp_config_file_all_disabled)
     assert "COMPARE" in checks
     assert "CONSTANT" in checks

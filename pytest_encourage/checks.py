@@ -46,6 +46,7 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
                     names.append(check.__doc__)
                     break
 
+
 # pylint: disable=c0103
 def get_enabled_checks_from_configBool(config_path=".encouragerc"):
     """Checks to be run when the expression being asserted is a comparison"""

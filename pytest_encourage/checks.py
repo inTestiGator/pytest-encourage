@@ -1,9 +1,9 @@
 """ Defines several checks to assess the quality of assertions """
 import ast
 import inspect
-from typing import Iterator, Dict, List
-import customtypes as types
+import pytest_encourage.customtypes as types
 import configparser
+from typing import Iterator, Dict, List
 
 
 def run_checks(test_fn: callable, **kwargs) -> List[str]:
@@ -38,8 +38,6 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
     config = configparser.ConfigParser()
     config.read(config_path)
     names = []
-    print("k")
-    print(config["comparison checks"])
     for name in config["comparison checks"]:
         if config["comparison checks"][name] == "true":
             for check in COMPARE_CHECKS:
@@ -47,7 +45,6 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
                     names.append(check.__doc__)
                     break
 
-    print(names)
 # Checks to be run when the expression being asserted is a comparison
 
 def get_enabled_checks_from_configBool(config_path=".encouragerc"):

@@ -20,7 +20,7 @@ def read(filename):
     """ This function is reads in the file with the file path """
     filepath = os.path.join(os.path.dirname(__file__), filename)
     with io.open(filepath, mode="r", encoding="utf-8") as f:
-    return f.read()
+        return f.read()
 
 
 # Where it all begins

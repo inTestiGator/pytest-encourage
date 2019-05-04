@@ -49,9 +49,38 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
                     break
 
     print(names)
-
-
 # Checks to be run when the expression being asserted is a comparison
+
+def get_enabled_checks_from_configBool(config_path=".encouragerc"):
+    config = configparser.ConfigParser()
+    config.read(config_path)
+    names = []
+    print("k")
+    print(config["comparison checks"])
+    for name in config["constant checks"]:
+        if config["constant checks"][name] == "true":
+            for check in CONSTANT_CHECKS:
+                if check.__name__ == name:
+                    names.append(check.__doc__)
+                    break
+
+    print(names)
+
+
+def get_enabled_checks_from_configBoolOp(config_path=".encouragerc"):
+    config = configparser.ConfigParser()
+    config.read(config_path)
+    names = []
+    print("k")
+    print(config["comparison checks"])
+    for name in config["BOOL_OP_CHECKS"]:
+        if config["BOOL_OP_CHECKS"][name] == "true":
+            for check in BOOL_OP_CHECKS:
+                if check.__name__ == name:
+                    names.append(check.__doc__)
+                    break
+
+    print(names)
 
 
 def get_all_compares(expr: ast.Compare) -> Iterator[types.Comparison]:
@@ -141,4 +170,4 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
 
 
 if __name__ == "__main__":
-    get_enabled_checks_from_config()
+    get_enabled_checks_from_configBoolOp()

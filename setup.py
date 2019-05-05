@@ -1,3 +1,4 @@
+"""Set up"""
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -7,15 +8,17 @@ import os
 from setuptools import setup
 
 # Package meta-data
-NAME = 'pytest-encourage'
-VERSION = '0.1.0'
-DESCRIPTION = 'A pytest plugin used for testing data coverage and providing positive reinforcement.'
-LICENSE= 'GNU GPLv3'
-AUTHOR = 'Jahlia Finney, Aubrey Collins, Elisia Wright, Jared Scklenski, Chih Jung Chen'
-AUTHOR_EMAIL = 'finneyj@allegheny.edu, collinsa@allegheny.edu, chenc@allegheny.edu, wrighte@allegheny.edu, scklenskij@allegheny.edu'
-URL = 'https://github.com/inTestiGator/pytest-encourage'
+NAME = "pytest-encourage"
+VERSION = "0.1.0"
+DESCRIPTION = "A pytest plugin used for testing data coverage and providing positive reinforcement." # noqa: E501
+LICENSE = "GNU GPLv3" # noqa: E225
+AUTHOR = "Jahlia Finney, Aubrey Collins, Elisia Wright, Jared Scklenski, Chih Jung Chen"
+# pylint: disable=C0301
+AUTHOR_EMAIL = "finneyj@allegheny.edu, collinsa@allegheny.edu, chenc@allegheny.edu,wrighte@allegheny.edu, scklenskij@allegheny.edu" # noqa: E501
+URL = "https://github.com/inTestiGator/pytest-encourage"
 
 
+# pylint: disable=C0103
 def read(filename):
     """ This function is reads in the file with the file path """
     filepath = os.path.join(os.path.dirname(__file__), filename)
@@ -29,17 +32,17 @@ setup(
     version=VERSION,
     description=DESCRIPTION,
     license=LICENSE,
-    long_description=read('README.md'),
+    long_description=read("README.md"),
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     url=URL,
-    py_modules=['pytest_encourage'],
-    install_requires=['pytest'],
-    entry_points={'pytest11': ['encourage = pytest_encourage.plugin', ], },
+    py_modules=["pytest_encourage"],
+    install_requires=["pytest"],
+    entry_points={"pytest11": ["encourage = pytest_encourage.plugin"]},
     classifiers=[
-        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
-        'Framework :: Pytest',
-        'Programming Language :: Python',
-        'Operating System :: OS Independent',
-    ]
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Framework :: Pytest",
+        "Programming Language :: Python",
+        "Operating System :: OS Independent",
+    ],
 )

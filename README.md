@@ -12,20 +12,11 @@ Coding can be frustrating and we definitely do not need pytest report to
 discourage us even more. Pytest_encourage gives you uplifting messages and
 provides you with constructional advice on how to improve your assertions.
 
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
 ### Installing
 
 To use this plugin, you have to
 
-1. clone this github repository
+1. Clone this github repository
 
 ```
 git clone git@github.com:inTestiGator/pytest-encourage.git
@@ -53,34 +44,25 @@ Explain what these tests test and why
 Give an example
 ```
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## Authors
 
 * <a href="https://github.com/finneyj2">
       <img src="https://avatars3.githubusercontent.com/u/31444681?s=400&v=4"
-        width=40px;> <h3>Jahlia Finney</h3>
+        width=40px;> <p>Jahlia Finney</p>
 * <a href="https://github.com/aubreypc">
       <img src="https://avatars1.githubusercontent.com/u/14224785?s=400&v=4"
         width=40px;>
-        <h3>Aubrey Collins</h3>
+        <p>Aubrey Collins</p>
 * <a href="https://github.com/ElisiaW">
       <img src="https://avatars0.githubusercontent.com/u/35603463?s=400&v=4"
         width=40px;>
-        <h3>Elisia Wright</h3>
+        <p>Elisia Wright</p>
 * <a href="https://github.com/szklenskij">
       <img src="https://avatars0.githubusercontent.com/u/35603325?s=400&v=4"
-        width=40px;> <h3>Jared Scklenski</h3>
+        width=40px;> <p>Jared Scklenski</p>
 * <a href="https://github.com/chenc-allegheny">
       <img src="https://avatars1.githubusercontent.com/u/35603883?s=400&v=4"
-        width=40px;> <h3>Chih-Jung Chen</h3> 
-
+        width=40px;> <p>Chih-Jung Chen</p> </br>
 
 See also the list of [contributors](https://github.com/inTestiGator/pytest-encourage/graphs/contributors)
 who participated in this project.
@@ -89,9 +71,3 @@ who participated in this project.
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md)
 file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc

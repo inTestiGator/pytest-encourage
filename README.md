@@ -65,9 +65,21 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 * **Jahlia Finney** <a href="https://github.com/finneyj2">
       <img src="https://avatars3.githubusercontent.com/u/31444681?s=400&v=4"
-        width=20px;>
+        width=40px;>
+* **Aubrey Collins** <a href="https://github.com/aubreypc">
+      <img src="https://avatars1.githubusercontent.com/u/14224785?s=400&v=4"
+        width=40px;>
+* **Elisia Wright** <a href="https://github.com/ElisiaW">
+      <img src="https://avatars0.githubusercontent.com/u/35603463?s=400&v=4"
+        width=40px;>
+* **Jared Scklenski** <a href="https://github.com/szklenskij">
+      <img src="https://avatars0.githubusercontent.com/u/35603325?s=400&v=4"
+        width=40px;>
+* **Chih-Jung Chen** <a href="https://github.com/chenc-allegheny">
+      <img src="https://avatars1.githubusercontent.com/u/35603883?s=400&v=4"
+        width=40px;>
 
-See also the list of [contributors](https://github.com/your/project/contributors)
+See also the list of [contributors](https://github.com/inTestiGator/pytest-encourage/graphs/contributors)
 who participated in this project.
 
 ## License

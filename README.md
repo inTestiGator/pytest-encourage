@@ -46,22 +46,16 @@ Give an example
 
 ## Authors
 
-* <a href="https://github.com/finneyj2">
-      <img src="https://avatars3.githubusercontent.com/u/31444681?s=400&v=4"
-        width=40px;> <p>Jahlia Finney</p>
-* <a href="https://github.com/aubreypc">
-      <img src="https://avatars1.githubusercontent.com/u/14224785?s=400&v=4"
-        width=40px;>
-        <p>Aubrey Collins</p>
-* <a href="https://github.com/ElisiaW">
-      <img src="https://avatars0.githubusercontent.com/u/35603463?s=400&v=4"
-        width=40px;>
-        <p>Elisia Wright</p>
-* <a href="https://github.com/szklenskij">
-      <img src="https://avatars0.githubusercontent.com/u/35603325?s=400&v=4"
-        width=40px;> <p>Jared Scklenski</p>
-* <a href="https://github.com/chenc-allegheny">
-      <img src="https://avatars1.githubusercontent.com/u/35603883?s=400&v=4"
+* [Jahlia Finney](https://github.com/finneyj2)
+      ![Jahlia Finney](https://avatars3.githubusercontent.com/u/31444681?s=400&v=4)
+* [Aubrey Collins](https://github.com/aubreypc)
+      ![Aubrey Collins](https://avatars1.githubusercontent.com/u/14224785?s=400&v=4)
+* [Elisia Wright](https://github.com/ElisiaW)
+      ![Elisia Wright](https://avatars0.githubusercontent.com/u/35603463?s=400&v=4)
+* [Jared Scklenski](https://github.com/szklenskij)
+      ![Jared Scklenski](https://avatars0.githubusercontent.com/u/35603325?s=400&v=4)
+* [Chih-Jung Chen](https://github.com/chenc-allegheny)
+      ![Chih-Jung Chen](https://avatars1.githubusercontent.com/u/35603883?s=400&v=4)
         width=40px;> <p>Chih-Jung Chen</p> <br>
 
 See also the list of [contributors](https://github.com/inTestiGator/pytest-encourage/graphs/contributors)

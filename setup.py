@@ -1,5 +1,5 @@
 """Set up"""
-#!/usr/bin/env python
+# !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import io
@@ -10,11 +10,12 @@ from setuptools import setup
 # Package meta-data
 NAME = "pytest-encourage"
 VERSION = "0.1.0"
-DESCRIPTION = "A pytest plugin used for testing data coverage and providing positive reinforcement." # noqa: E501
-LICENSE = "GNU GPLv3" # noqa: E225
+# pylint: disable=C0301
+DESCRIPTION = "A pytest plugin used for testing data coverage and providing positive reinforcement."    # noqa: E501
+LICENSE = "GNU GPLv3"   # noqa: E225
 AUTHOR = "Jahlia Finney, Aubrey Collins, Elisia Wright, Jared Scklenski, Chih Jung Chen"
 # pylint: disable=C0301
-AUTHOR_EMAIL = "finneyj@allegheny.edu, collinsa@allegheny.edu, chenc@allegheny.edu,wrighte@allegheny.edu, scklenskij@allegheny.edu" # noqa: E501
+AUTHOR_EMAIL = "finneyj@allegheny.edu, collinsa@allegheny.edu, chenc@allegheny.edu,wrighte@allegheny.edu, scklenskij@allegheny.edu"     # noqa: E501
 URL = "https://github.com/inTestiGator/pytest-encourage"
 
 

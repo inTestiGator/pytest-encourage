@@ -1,5 +1,9 @@
 # pytest-encourage
 
+---
+[![Build Status](https://api.travis-ci.com/inTestiGator/pytest-encourage.svg?branch=master)](
+https://travis-ci.com/inTestiGator/pytest-encourage)
+---
 One Paragraph of project description goes
 
 ## Getting Started

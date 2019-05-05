@@ -47,7 +47,7 @@ Give an example
 ## Authors
 
 * [Jahlia Finney](https://github.com/finneyj2)
-      ![Jahlia Finney](https://avatars3.githubusercontent.com/u/31444681?s=400&v=4)
+      ![Jahlia Finney](https://avatars3.githubusercontent.com/u/31444681?s=400&v=4s=150)
 * [Aubrey Collins](https://github.com/aubreypc)
       ![Aubrey Collins](https://avatars1.githubusercontent.com/u/14224785?s=400&v=4)
 * [Elisia Wright](https://github.com/ElisiaW)

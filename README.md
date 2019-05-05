@@ -56,7 +56,6 @@ Give an example
       ![Jared Scklenski](https://avatars0.githubusercontent.com/u/35603325?s=400&v=4)
 * [Chih-Jung Chen](https://github.com/chenc-allegheny)
       ![Chih-Jung Chen](https://avatars1.githubusercontent.com/u/35603883?s=400&v=4)
-        width=40px;> <p>Chih-Jung Chen</p> <br>
 
 See also the list of [contributors](https://github.com/inTestiGator/pytest-encourage/graphs/contributors)
 who participated in this project.

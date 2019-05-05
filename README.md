@@ -62,7 +62,7 @@ Give an example
         width=40px;> <p>Jared Scklenski</p>
 * <a href="https://github.com/chenc-allegheny">
       <img src="https://avatars1.githubusercontent.com/u/35603883?s=400&v=4"
-        width=40px;> <p>Chih-Jung Chen</p> </br>
+        width=40px;> <p>Chih-Jung Chen</p> <br>
 
 See also the list of [contributors](https://github.com/inTestiGator/pytest-encourage/graphs/contributors)
 who participated in this project.

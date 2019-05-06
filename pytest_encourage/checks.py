@@ -5,6 +5,7 @@ import configparser
 from typing import Iterator, Dict, List
 import pytest_encourage.customtypes as types
 
+
 def run_checks(test_fn: callable, **kwargs) -> List[str]:
     """ Runs all the enabled checks on the specified test function """
     test_fn_src = inspect.getsource(test_fn)
@@ -22,10 +23,11 @@ def run_checks(test_fn: callable, **kwargs) -> List[str]:
     for node in ast.walk(tree):
         if isinstance(node, ast.Assert):
             if isinstance(node.test, ast.Compare):
-                failing += run_compare_checks(node, checks=checks["COMPARE"])
+                failing += run_compare_checks(node, checks=checks["COMPARISON CHECKS"])
             elif isinstance(node.test, ast.Constant):
                 failing += run_constant_checks(node, checks=checks["CONSTANT"])
     return failing
+
 
 def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, callable]:
     """ Reads the config file and determines which checks are enabled.
@@ -38,10 +40,12 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
     names = []
     names_true = {}
     constant_true = {}
+    boolConst = []
+    compCh = []
     default = config.sections()
     default = 1
-    a = "comparison checks"
-    b = "constant checks"
+    a = "COMPARISON CHECKS"
+    b = "CONSTANT"
     c = "boolean operation checks"
 
     for name in config["constant checks"]:
@@ -50,6 +54,8 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
                 if check.__name__ == name:
                     constant_true.update({b: check})
                     constant_true.update({b: check})
+                    boolConst = True
+                    print(boolConst)
                     print(constant_true)
                     break
 
@@ -60,6 +66,7 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
                     names.append(check.__doc__)
                     names_true.update({a: check})
                     names_true.update({a: check})
+
                     print(names_true)
                     break
 

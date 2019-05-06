@@ -1,7 +1,7 @@
 # pytest-encourage
 
 ---
-![logo](.github/pytest_encourage_logo.PNG "pytest_encourage")
+![logo](.github/pytest_encourage_logo.png "pytest_encourage")
 
 [![Build Status](https://api.travis-ci.com/inTestiGator/pytest-encourage.svg?branch=master)](
 https://travis-ci.com/inTestiGator/pytest-encourage)

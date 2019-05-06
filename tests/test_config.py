@@ -1,5 +1,5 @@
 """ Tests for using the config file to change plugin functionality """
-
+import pytest
 from pytest_encourage.checks import get_enabled_checks_from_config
 from pytest_encourage.checks import COMPARE_CHECKS, CONSTANT_CHECKS, BOOL_OP_CHECKS
 

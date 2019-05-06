@@ -1,4 +1,6 @@
 """ Tests that functions are linted correctly """
+import pytest
+
 from pytest_encourage.checks import (
     run_checks,
     COMPARE_CHECKS,

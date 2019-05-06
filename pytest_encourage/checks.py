@@ -64,20 +64,6 @@ def get_enabled_checks_from_configBool(config_path=".encouragerc"):
 
     print(names)
 
-def get_enabled_checks_from_configBool(config_path=".encouragerc"):
-    config = configparser.ConfigParser()
-    config.read(config_path)
-    names = []
-    print("k")
-    print(config["comparison checks"])
-    for name in config["constant checks"]:
-        if config["constant checks"][name] == "true":
-            for check in CONSTANT_CHECKS:
-                if check.__name__ == name:
-                    names.append(check.__doc__)
-                    break
-
-    print(names)
 
 # pylint: disable=c0103
 def get_enabled_checks_from_configBoolOp(config_path=".encouragerc"):
@@ -184,8 +170,4 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
 
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     get_enabled_checks_from_configBoolOp()
-=======
-    get_enabled_checks_from_configBool()
->>>>>>> efb3f422dcaa665200574c3eb8eb51ef6f8db9bb

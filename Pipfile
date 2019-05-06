@@ -12,6 +12,7 @@ pytest = "*"
 [packages]
 pytest-cov = "*"
 shell = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.7"

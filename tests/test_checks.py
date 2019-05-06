@@ -1,4 +1,6 @@
 """ Tests that functions are linted correctly """
+import pytest
+
 from pytest_encourage.checks import (
     run_checks,
     COMPARE_CHECKS,
@@ -7,7 +9,6 @@ from pytest_encourage.checks import (
 )
 
 
-@pytest.mark.xfail
 def test_compare_checks():
     """ Tests that comparison checks are working """
 
@@ -22,7 +23,6 @@ def test_compare_checks():
         assert check.__doc__ in failed
 
 
-@pytest.mark.xfail
 def test_constant_checks():
     """ Tests that constant checks are working """
 
@@ -35,7 +35,6 @@ def test_constant_checks():
         assert check.__doc__ in failed
 
 
-@pytest.mark.xfail
 def test_bool_op_checks():
     """ Tests that boolean operation checks are working """
 

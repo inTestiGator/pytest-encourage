@@ -5,7 +5,6 @@ import configparser
 from typing import Iterator, Dict, List
 import pytest_encourage.customtypes as types
 
-
 def run_checks(test_fn: callable, **kwargs) -> List[str]:
     """ Runs all the enabled checks on the specified test function """
     test_fn_src = inspect.getsource(test_fn)
@@ -26,10 +25,7 @@ def run_checks(test_fn: callable, **kwargs) -> List[str]:
                 failing += run_compare_checks(node, checks=checks["COMPARE"])
             elif isinstance(node.test, ast.Constant):
                 failing += run_constant_checks(node, checks=checks["CONSTANT"])
-            elif isinstance(node.test, ast.BoolOp):
-                failing += run_bool_op_checks(node.test, checks=checks["BOOL"])
     return failing
-
 
 def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, callable]:
     """ Reads the config file and determines which checks are enabled.
@@ -38,13 +34,21 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
     # Unused argument 'config_path'
     config = configparser.ConfigParser()
     config.read(config_path)
+    config.sections()
     names = []
+    names_true = {}
+    default = config.sections()
+    default = 1
     for name in config["comparison checks"]:
         if config["comparison checks"][name] == "true":
+            kat = config["comparison checks"][name]
             for check in COMPARE_CHECKS:
                 if check.__name__ == name:
                     names.append(check.__doc__)
-                    break
+                    names_true.update({kat: check})
+                    print(names_true)
+
+    return names
 
 
 # pylint: disable=c0103
@@ -53,8 +57,6 @@ def get_enabled_checks_from_configBool(config_path=".encouragerc"):
     config = configparser.ConfigParser()
     config.read(config_path)
     names = []
-    print("k")
-    print(config["comparison checks"])
     for name in config["constant checks"]:
         if config["constant checks"][name] == "true":
             for check in CONSTANT_CHECKS:
@@ -66,21 +68,6 @@ def get_enabled_checks_from_configBool(config_path=".encouragerc"):
 
 
 # pylint: disable=c0103
-def get_enabled_checks_from_configBoolOp(config_path=".encouragerc"):
-    """get enabled checks"""
-    config = configparser.ConfigParser()
-    config.read(config_path)
-    names = []
-    print("k")
-    print(config["comparison checks"])
-    for name in config["BOOL_OP_CHECKS"]:
-        if config["BOOL_OP_CHECKS"][name] == "true":
-            for check in BOOL_OP_CHECKS:
-                if check.__name__ == name:
-                    names.append(check.__doc__)
-                    break
-
-    print(names)
 
 
 def get_all_compares(expr: ast.Compare) -> Iterator[types.Comparison]:
@@ -170,4 +157,4 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
 
 
 if __name__ == "__main__":
-    get_enabled_checks_from_configBoolOp()
+    get_enabled_checks_from_configBool(config_path)

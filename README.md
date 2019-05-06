@@ -27,47 +27,34 @@ To use this plugin, you have to
 
 1. Clone this github repository
 
-```
-git clone git@github.com:inTestiGator/pytest-encourage.git
-```
+  ```
+  git clone git@github.com:inTestiGator/pytest-encourage.git
+  ```
 
-2. Create a shell:
+* Create a shell:
 
-```
-pipenv  shell
-```
+  ```
+  pipenv  shell
+  ```
 
-3. Install pytest_encourage package into virtualenv:
+* Install pytest_encourage package into virtualenv:
 
-```
-pipenv run shell
-pip install -e .
-```
+  ```
+  pipenv run shell
+  pip install -e .
+  ```
 
-4. Exit the virtualenv:
+* Exit the virtualenv:
 
-```
-exit
-```
+  ```
+  exit
+  ```
 
-5. Run
+* Run
 
-```
-pipenv run pytest
-```
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-## Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
+  ```
+  pipenv run pytest
+  ```
 
 ## Authors
 

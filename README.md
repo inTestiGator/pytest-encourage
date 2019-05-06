@@ -14,6 +14,13 @@ Coding can be frustrating and we definitely do not need pytest report to
 discourage us even more. Pytest_encourage gives you uplifting messages and
 provides you with constructional advice on how to improve your assertions.
 
+## Requirement
+
+* Python version 3.6.7
+* Pipenv
+  * Use `pip install --user` to install PIPENV_VENV_IN_PROJECT
+  * Use `pipenv install --dev` to install development dependencies
+
 ## Installing
 
 To use this plugin, you have to
@@ -24,7 +31,30 @@ To use this plugin, you have to
 git clone git@github.com:inTestiGator/pytest-encourage.git
 ```
 
-*
+2. Create a shell:
+
+```
+pipenv  shell
+```
+
+3. Install pytest_encourage package into virtualenv:
+
+```
+pipenv run shell
+pip install -e .
+```
+
+4. Exit the virtualenv:
+
+```
+exit
+```
+
+5. Run
+
+```
+pipenv run pytest
+```
 
 ## Running the tests
 
@@ -38,13 +68,6 @@ Explain what these tests test and why
 Give an example
 ```
 
-## And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Authors
 

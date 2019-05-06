@@ -1,6 +1,8 @@
 # pytest-encourage
 
 ---
+![logo](.github/pytest_encourage_logo.png "pytest_encourage")
+
 [![Build Status](https://api.travis-ci.com/inTestiGator/pytest-encourage.svg?branch=master)](
 https://travis-ci.com/inTestiGator/pytest-encourage)
 [![codecov.io](https://img.shields.io/codecov/c/github/inTestiGator/pytest-encourage/master.svg)](
@@ -12,37 +14,47 @@ Coding can be frustrating and we definitely do not need pytest report to
 discourage us even more. Pytest_encourage gives you uplifting messages and
 provides you with constructional advice on how to improve your assertions.
 
+## Requirement
+
+* Python version 3.6.7
+* Pipenv
+  * Use `pip install --user` to install the virtualenv
+  * Use `pipenv install --dev` to install development dependencies
+
 ## Installing
 
 To use this plugin, you have to
 
 1. Clone this github repository
 
-```
-git clone git@github.com:inTestiGator/pytest-encourage.git
-```
+  ```
+  git clone git@github.com:inTestiGator/pytest-encourage.git
+  ```
 
-*
+* Create a shell:
 
-## Running the tests
+  ```
+  pipenv  shell
+  ```
 
-Explain how to run the automated tests for this system
+* Install pytest_encourage package into virtualenv:
 
-## Break down into end to end tests
+  ```
+  pipenv run shell
+  pip install -e .
+  ```
 
-Explain what these tests test and why
+* Exit the virtualenv:
 
-```
-Give an example
-```
+  ```
+  exit
+  ```
 
-## And coding style tests
+* Run
 
-Explain what these tests test and why
-
-```
-Give an example
-```
+  ```
+  pipenv run pytest
+  ```
 
 ## Authors
 

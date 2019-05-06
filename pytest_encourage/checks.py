@@ -44,14 +44,15 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
     compCh = []
     default = config.sections()
     default = 1
-    a = "COMPARISON CHECKS"
-    b = "CONSTANT"
+
+
     c = "boolean operation checks"
 
     for name in config["constant checks"]:
         if config["constant checks"][name] == "true":
             for check in CONSTANT_CHECKS:
                 if check.__name__ == name:
+                    a = "COMPARISON CHECKS"
                     constant_true.update({b: check})
                     constant_true.update({b: check})
                     boolConst = True
@@ -63,6 +64,7 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
         if config["comparison checks"][name] == "true":
             for check in COMPARE_CHECKS:
                 if check.__name__ == name:
+                    b = "CONSTANT"
                     names.append(check.__doc__)
                     names_true.update({a: check})
                     names_true.update({a: check})

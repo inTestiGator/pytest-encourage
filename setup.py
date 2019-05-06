@@ -1,4 +1,4 @@
-"""Set up"""
+""" Setup for the plugin """
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 

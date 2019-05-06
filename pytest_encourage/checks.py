@@ -39,16 +39,18 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
     names_true = {}
     default = config.sections()
     default = 1
+    a = "comparison checks"
     for name in config["comparison checks"]:
         if config["comparison checks"][name] == "true":
-            kat = config["comparison checks"][name]
+            kat = config["comparison checks"]
             for check in COMPARE_CHECKS:
                 if check.__name__ == name:
                     names.append(check.__doc__)
-                    names_true.update({kat: check})
+                    names_true.update({a: check})
+                    names_true.update({a: check})
                     print(names_true)
 
-    return names
+    return names_true
 
 
 # pylint: disable=c0103

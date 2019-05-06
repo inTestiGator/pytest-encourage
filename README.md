@@ -18,7 +18,7 @@ provides you with constructional advice on how to improve your assertions.
 
 * Python version 3.6.7
 * Pipenv
-  * Use `pip install --user` to install PIPENV_VENV_IN_PROJECT
+  * Use `pip install --user` to install the virtualenv
   * Use `pipenv install --dev` to install development dependencies
 
 ## Installing

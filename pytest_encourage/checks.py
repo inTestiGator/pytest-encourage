@@ -1,9 +1,9 @@
 """ Defines several checks to assess the quality of assertions """
 import ast
 import inspect
-from typing import Iterator, Dict, List
-import customtypes as types
 import configparser
+from typing import Iterator, Dict, List
+import pytest_encourage.customtypes as types
 
 
 def run_checks(test_fn: callable, **kwargs) -> List[str]:
@@ -17,6 +17,7 @@ def run_checks(test_fn: callable, **kwargs) -> List[str]:
         test_fn_src = "\n".join([line[indent:] for line in src_lines])
 
     tree = ast.parse(test_fn_src)
+    # pylint: disable=E1111
     checks = get_enabled_checks_from_config(**kwargs)
     failing = []
     for node in ast.walk(tree):
@@ -38,8 +39,6 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
     config = configparser.ConfigParser()
     config.read(config_path)
     names = []
-    print("k")
-    print(config["comparison checks"])
     for name in config["comparison checks"]:
         if config["comparison checks"][name] == "true":
             for check in COMPARE_CHECKS:
@@ -47,9 +46,10 @@ def get_enabled_checks_from_config(config_path=".encouragerc") -> Dict[str, call
                     names.append(check.__doc__)
                     break
 
-    print(names)
 
+# pylint: disable=c0103
 def get_enabled_checks_from_configBool(config_path=".encouragerc"):
+    """Checks to be run when the expression being asserted is a comparison"""
     config = configparser.ConfigParser()
     config.read(config_path)
     names = []
@@ -64,7 +64,23 @@ def get_enabled_checks_from_configBool(config_path=".encouragerc"):
 
     print(names)
 
-# Checks to be run when the expression being asserted is a comparison
+
+# pylint: disable=c0103
+def get_enabled_checks_from_configBoolOp(config_path=".encouragerc"):
+    """get enabled checks"""
+    config = configparser.ConfigParser()
+    config.read(config_path)
+    names = []
+    print("k")
+    print(config["comparison checks"])
+    for name in config["BOOL_OP_CHECKS"]:
+        if config["BOOL_OP_CHECKS"][name] == "true":
+            for check in BOOL_OP_CHECKS:
+                if check.__name__ == name:
+                    names.append(check.__doc__)
+                    break
+
+    print(names)
 
 
 def get_all_compares(expr: ast.Compare) -> Iterator[types.Comparison]:
@@ -154,4 +170,4 @@ def run_bool_op_checks(expr: ast.BoolOp, checks=BOOL_OP_CHECKS):
 
 
 if __name__ == "__main__":
-    get_enabled_checks_from_configBool()
+    get_enabled_checks_from_configBoolOp()
